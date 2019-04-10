@@ -19,6 +19,7 @@
     flycheck
     material-theme
     color-theme-sanityinc-tomorrow
+    base16-theme
     py-autopep8
     autopair
     auto-complete))
@@ -51,6 +52,8 @@
 (require 'auto-complete)
 (require 'auto-complete-config)
 (ac-config-default)
+(custom-set-variables
+    '(tab-width 4)) ;; tabulaciones de 4 espacios
 
 ;; PYTHON CONFIGURATION
 ;; --------------------------------------
