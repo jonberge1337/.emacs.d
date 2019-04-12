@@ -35,9 +35,9 @@
     (set-frame-font (font-spec :family "Consolas"
                                :size 15
                                :antialias nil))
-    (set-frame-font (font-spec :family "Roboto Mono"
+    (set-frame-font (font-spec :family "DejaVu Sans Mono"
                                :size 15
-                               :antialias nil))
+                               :antialias t))
 )
 (setq make-backup-files nil) ; stop creating backup~ files
 (setq auto-save-default nil) ; stop creating #autosave# files
