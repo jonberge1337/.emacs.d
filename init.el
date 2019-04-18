@@ -43,8 +43,8 @@
 (setq make-backup-files nil) ; stop creating backup~ files
 (setq auto-save-default nil) ; stop creating #autosave# files
 (setq inhibit-startup-message t) ;; hide the startup message
-(load-theme 'base16-onedark t) ;; load alect-dark theme
-;; (load-theme 'sanityinc-tomorrow-eighties t) ;; load alect-dark theme
+;; (load-theme 'base16-onedark t) ;; load alect-dark theme
+(load-theme 'sanityinc-tomorrow-bright t) ;; load alect-dark theme
 (global-linum-mode t) ;; enable line numbers globally
 (require 'autopair)
 (autopair-global-mode) ;; enable autopair in all buffers
