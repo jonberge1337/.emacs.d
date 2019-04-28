@@ -37,9 +37,10 @@
     (set-frame-font (font-spec :family "Consolas"
                                :size 15
                                :antialias nil))
-    (set-frame-font (font-spec :family "DejaVu Sans Mono"
-                               :size 15
-                               :antialias t))
+    ;; (set-frame-font (font-spec :family "DejaVu Sans Mono"
+    ;;                            :size 15
+    ;;                            :antialias t))
+  (setq default-frame-alist '((font . "Dejavu Sans Mono-12")))
 )
 (setq make-backup-files nil) ; stop creating backup~ files
 (setq auto-save-default nil) ; stop creating #autosave# files
@@ -67,7 +68,7 @@
  '(hl-sexp-background-color "#1c1f26")
  '(package-selected-packages
    (quote
-	(base16-theme monokai-alt-theme color-theme-sanityinc-tomorrow autopair alect-themes sunburn-theme gruvbox-theme zenburn-theme monokai-theme spacemacs-theme py-autopep8 material-theme flycheck elpy ein)))
+	(exwm base16-theme monokai-alt-theme color-theme-sanityinc-tomorrow autopair alect-themes sunburn-theme gruvbox-theme zenburn-theme monokai-theme spacemacs-theme py-autopep8 material-theme flycheck elpy ein)))
  '(tab-width 4))
 	;; tabulaciones de 4 espacios
 
