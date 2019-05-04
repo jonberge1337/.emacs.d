@@ -34,9 +34,10 @@
 ;; BASIC CUSTOMIZATION
 ;; --------------------------------------
 (if (eq system-type 'windows-nt)
-    (set-frame-font (font-spec :family "Consolas"
-                               :size 15
-                               :antialias nil))
+	(setq default-frame-alist '((font . "Consolas-12:antialias=natural")))
+    ;; (set-frame-font (font-spec :family "Consolas"
+    ;;                            :size 15
+    ;;                            :antialias nil))
     ;; (set-frame-font (font-spec :family "DejaVu Sans Mono"
     ;;                            :size 15
     ;;                            :antialias t))
