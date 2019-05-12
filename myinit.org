@@ -21,7 +21,6 @@
   (setq show-paren-delay 0) ;; evitar tiempo de espera al remarcar
   (setq-default indent-tabs-mode t) ;; tabulaciones no espacios
   (setq-default tab-width 4) ;; tabulaciones de cuatro caracteres
-  (setq indent-line-function 'insert-tab)
   (global-linum-mode 1) ;; ver numero de linea
 
   #+END_SRC
