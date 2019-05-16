@@ -7,18 +7,41 @@
 (tool-bar-mode -1) ; Quitar el menu de copiar pegar 
 (menu-bar-mode -1) ; Quitar el menu de archivo 
 (scroll-bar-mode -1) ; Quitar la barra de scroll
+;; Variables de inicio:1 ends here
+
+;; [[file:~/.emacs.d/myinit.org::*Variables%20de%20inicio][Variables de inicio:2]]
 (if (eq system-type 'windows-nt)
-(setq default-frame-alist '((font . "Consolas-12:antialias=natural")))
-(setq default-frame-alist '((font . "Dejavu Sans Mono-12")))
-)
+  (setq default-frame-alist '((font . "Consolas-12:antialias=natural")))
+  (setq default-frame-alist '((font . "Dejavu Sans Mono-12")))
+  )
+;; Variables de inicio:2 ends here
+
+;; [[file:~/.emacs.d/myinit.org::*Variables%20de%20inicio][Variables de inicio:3]]
 (setq make-backup-files nil) ; stop creating backup~ files
 (setq auto-save-default nil) ; stop creating #autosave# files
+;; Variables de inicio:3 ends here
+
+;; [[file:~/.emacs.d/myinit.org::*Variables%20de%20inicio][Variables de inicio:4]]
 (show-paren-mode 1) ;; remarca parentesis llaves y corchetes
 (setq show-paren-delay 0) ;; evitar tiempo de espera al remarcar
+;; Variables de inicio:4 ends here
+
+;; [[file:~/.emacs.d/myinit.org::*Variables%20de%20inicio][Variables de inicio:5]]
 (setq-default indent-tabs-mode t) ;; tabulaciones no espacios
 (setq-default tab-width 4) ;; tabulaciones de cuatro caracteres
+;; Variables de inicio:5 ends here
+
+;; [[file:~/.emacs.d/myinit.org::*Variables%20de%20inicio][Variables de inicio:6]]
 (global-linum-mode 1) ;; ver numero de linea
-;; Variables de inicio:1 ends here
+;; Variables de inicio:6 ends here
+
+;; [[file:~/.emacs.d/myinit.org::*Variables%20de%20inicio][Variables de inicio:7]]
+(defun kill-current-buffer ()
+  "Kills the current buffer."
+  (interactive)
+  (kill-buffer (current-buffer)))
+(global-set-key (kbd "C-x k") 'kill-current-buffer)
+;; Variables de inicio:7 ends here
 
 ;; [[file:~/.emacs.d/myinit.org::*Try][Try:1]]
 (use-package try
@@ -119,3 +142,15 @@
 :ensure t
 :config (load-theme 'zenburn t))
 ;; Themes:1 ends here
+
+;; [[file:~/.emacs.d/myinit.org::*Themes][Themes:2]]
+(use-package spaceline
+  :ensure t
+  :config
+  (require 'spaceline-config)
+	(setq spaceline-buffer-encoding-abbrev-p nil)
+	(setq spaceline-line-column-p nil)
+	(setq spaceline-line-p nil)
+	(setq powerline-default-separator (quote arrow))
+	(spaceline-spacemacs-theme))
+;; Themes:2 ends here

@@ -166,3 +166,23 @@
   :config (load-theme 'zenburn t))
 
   #+END_SRC
+
+  La barra de abajo
+  #+BEGIN_SRC emacs-lisp
+	(use-package spaceline
+	  :ensure t
+	  :config
+	  (require 'spaceline-config)
+		(setq spaceline-buffer-encoding-abbrev-p nil)
+		(setq spaceline-line-column-p nil)
+		(setq spaceline-line-p nil)
+		(setq powerline-default-separator (quote arrow))
+		(spaceline-spacemacs-theme))
+  #+END_SRC
+
+  Poner la hora
+  #+BEGIN_SRC emacs-lisp
+	(setq display-time-24hr-format t)
+	(setq display-time-format "%H:%M - %d %B %Y")
+	(display-time-mode 1)
+  #+END_SRC
