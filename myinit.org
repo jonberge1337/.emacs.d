@@ -6,22 +6,52 @@
 
   #+END_SRC
 * Variables de inicio
+  quitar el mensaje del principio y los menus
   #+BEGIN_SRC emacs-lisp
   (setq inhibit-startup-message t) ; Quitar el mensaje del principio
   (tool-bar-mode -1) ; Quitar el menu de copiar pegar 
   (menu-bar-mode -1) ; Quitar el menu de archivo 
   (scroll-bar-mode -1) ; Quitar la barra de scroll
-  (if (eq system-type 'windows-nt)
-  (setq default-frame-alist '((font . "Consolas-12:antialias=natural")))
-  (setq default-frame-alist '((font . "Dejavu Sans Mono-12")))
-  )
-  (setq make-backup-files nil) ; stop creating backup~ files
-  (setq auto-save-default nil) ; stop creating #autosave# files
-  (show-paren-mode 1) ;; remarca parentesis llaves y corchetes
-  (setq show-paren-delay 0) ;; evitar tiempo de espera al remarcar
+  #+END_SRC
+
+  configurar fuentes dependiendo el sistema operativo
+  #+BEGIN_SRC emacs-lisp
+	(if (eq system-type 'windows-nt)
+	  (setq default-frame-alist '((font . "Consolas-12:antialias=natural")))
+	  (setq default-frame-alist '((font . "Dejavu Sans Mono-12")))
+	  )
+  #+END_SRC
+  
+  Evitar archivos de copia de seguridad ya que luego se llena de archivos basura
+  #+BEGIN_SRC emacs-lisp
+	  (setq make-backup-files nil) ; stop creating backup~ files
+	  (setq auto-save-default nil) ; stop creating #autosave# files
+  #+END_SRC
+
+  Marcar los parentesis
+  #+BEGIN_SRC emacs-lisp
+	(show-paren-mode 1) ;; remarca parentesis llaves y corchetes
+	(setq show-paren-delay 0) ;; evitar tiempo de espera al remarcar
+  #+END_SRC
+  
+  Tabulaciones
+  #+BEGIN_SRC emacs-lisp
   (setq-default indent-tabs-mode t) ;; tabulaciones no espacios
-  (setq-default tab-width 4) ;; tabulaciones de cuatro caracteres
-  (global-linum-mode 1) ;; ver numero de linea
+  (setq-default tab-width 4) ;; tabulaciones de cuatro caracteres  
+  #+END_SRC
+
+  numero de lineas
+  #+BEGIN_SRC emacs-lisp
+  (global-linum-mode 1) ;; ver numero de linea  
+  #+END_SRC
+
+  Matar el buffer sin preguntar, siempre y cuando no este guardado el archivo
+  #+BEGIN_SRC emacs-lisp
+	(defun kill-current-buffer ()
+	  "Kills the current buffer."
+	  (interactive)
+	  (kill-buffer (current-buffer)))
+	(global-set-key (kbd "C-x k") 'kill-current-buffer)
 
   #+END_SRC
 * Try
@@ -47,6 +77,7 @@
 
   #+END_SRC
 * Autopair
+  Mucho mejor el electric-pair-mode que el autopair, autopair es mas lento
   #+BEGIN_SRC emacs-lisp
 	(use-package autopair
 	:disabled

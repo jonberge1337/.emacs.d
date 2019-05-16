@@ -44,6 +44,15 @@
 :disabled
 :config
 (autopair-global-mode))
+
+(setq electric-pair-pairs '(
+						   (?\{ . ?\})
+						   (?\( . ?\))
+						   (?\[ . ?\])
+						   (?\" . ?\")
+						   (?\' . ?\')
+						   ))
+(electric-pair-mode t)
 ;; Autopair:1 ends here
 
 ;; [[file:~/.emacs.d/myinit.org::*Ace%20windows%20cambiar%20ventanas%20facil][Ace windows cambiar ventanas facil:1]]
