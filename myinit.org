@@ -48,10 +48,19 @@
   #+END_SRC
 * Autopair
   #+BEGIN_SRC emacs-lisp
-  (use-package autopair
-  :ensure t
-  :config
-  (autopair-global-mode))
+	(use-package autopair
+	:disabled
+	:config
+	(autopair-global-mode))
+
+	(setq electric-pair-pairs '(
+							   (?\{ . ?\})
+							   (?\( . ?\))
+							   (?\[ . ?\])
+							   (?\" . ?\")
+							   (?\' . ?\')
+							   ))
+	(electric-pair-mode t)
 
   #+END_SRC
 * Ace windows cambiar ventanas facil
@@ -121,8 +130,8 @@
   #+END_SRC
 * Themes
   #+BEGIN_SRC emacs-lisp
-  (use-package gruvbox-theme
+  (use-package zenburn-theme
   :ensure t
-  :config (load-theme 'gruvbox t))
+  :config (load-theme 'zenburn t))
 
   #+END_SRC

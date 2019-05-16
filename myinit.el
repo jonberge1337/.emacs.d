@@ -17,7 +17,6 @@
 (setq show-paren-delay 0) ;; evitar tiempo de espera al remarcar
 (setq-default indent-tabs-mode t) ;; tabulaciones no espacios
 (setq-default tab-width 4) ;; tabulaciones de cuatro caracteres
-(setq indent-line-function 'insert-tab)
 (global-linum-mode 1) ;; ver numero de linea
 ;; Variables de inicio:1 ends here
 
@@ -42,7 +41,7 @@
 
 ;; [[file:~/.emacs.d/myinit.org::*Autopair][Autopair:1]]
 (use-package autopair
-:ensure t
+:disabled
 :config
 (autopair-global-mode))
 ;; Autopair:1 ends here
@@ -107,7 +106,7 @@
 ;; Autocomplete:1 ends here
 
 ;; [[file:~/.emacs.d/myinit.org::*Themes][Themes:1]]
-(use-package gruvbox-theme
+(use-package zenburn-theme
 :ensure t
-:config (load-theme 'gruvbox t))
+:config (load-theme 'zenburn t))
 ;; Themes:1 ends here
