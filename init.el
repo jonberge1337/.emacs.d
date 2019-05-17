@@ -19,7 +19,7 @@
  '(default-input-method "spanish-postfix")
  '(package-selected-packages
    (quote
-	(spaceline gruvbox-theme auto-complete counsel ace-window autopair org-bullets which-key try use-package))))
+	(jedi spaceline gruvbox-theme auto-complete counsel ace-window autopair org-bullets which-key try use-package))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

@@ -154,3 +154,24 @@
 	(setq powerline-default-separator (quote arrow))
 	(spaceline-spacemacs-theme))
 ;; Themes:2 ends here
+
+;; [[file:~/.emacs.d/myinit.org::*Themes][Themes:3]]
+(setq display-time-24hr-format t)
+(setq display-time-format "%H:%M - %d %B %Y")
+(display-time-mode 1)
+;; Themes:3 ends here
+
+;; [[file:~/.emacs.d/myinit.org::*Flycheck][Flycheck:1]]
+(use-package flycheck
+  :ensure t
+  :init
+  (global-flycheck-mode t))
+;; Flycheck:1 ends here
+
+;; [[file:~/.emacs.d/myinit.org::*Python][Python:1]]
+(use-package jedi
+  :ensure t
+  :init
+  (add-hook 'python-mode-hook 'jedi:setup)
+  (add-hook 'python-mode-hook 'jedi:ac-setup))
+;; Python:1 ends here

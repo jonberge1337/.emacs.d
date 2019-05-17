@@ -1,3 +1,4 @@
+
 #+STARTUP: overview 
 #+PROPERTY: header-args :comments yes :results silent
 * Repositorios
@@ -185,4 +186,19 @@
 	(setq display-time-24hr-format t)
 	(setq display-time-format "%H:%M - %d %B %Y")
 	(display-time-mode 1)
+  #+END_SRC
+* Flycheck
+  #+BEGIN_SRC emacs-lisp
+	(use-package flycheck
+	  :ensure t
+	  :init
+	  (global-flycheck-mode t))
+  #+END_SRC
+* Python
+  #+BEGIN_SRC emacs-lisp
+	(use-package jedi
+	  :ensure t
+	  :init
+	  (add-hook 'python-mode-hook 'jedi:setup)
+	  (add-hook 'python-mode-hook 'jedi:ac-setup))
   #+END_SRC
