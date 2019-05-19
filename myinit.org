@@ -162,10 +162,26 @@
   #+END_SRC
 * Themes
   #+BEGIN_SRC emacs-lisp
-  (use-package zenburn-theme
-  :ensure t
-  :config (load-theme 'zenburn t))
+	;; (use-package color-theme-sanityinc-tomorrow
+	;; :ensure t
+	;; :config (load-theme 'sanityinc-tomorrow-eighties t))
 
+
+	;; (use-package zenburn-theme
+	;;   :ensure t
+	;;   :config (load-theme 'zenburn t))
+
+	;; (use-package gruvbox-theme
+	;;   :ensure t
+	;;   :config (load-theme 'gruvbox t))
+
+	(use-package alect-themes
+	  :ensure t
+	  :config (load-theme 'alect-dark t))
+
+	;; (use-package monokai
+	;;   :ensure t
+	;;   :config (load-theme 'monokai t))
   #+END_SRC
 
   La barra de abajo

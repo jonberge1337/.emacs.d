@@ -138,9 +138,26 @@
 ;; Autocomplete:1 ends here
 
 ;; [[file:~/.emacs.d/myinit.org::*Themes][Themes:1]]
-(use-package zenburn-theme
-:ensure t
-:config (load-theme 'zenburn t))
+;; (use-package color-theme-sanityinc-tomorrow
+;; :ensure t
+;; :config (load-theme 'sanityinc-tomorrow-eighties t))
+
+
+;; (use-package zenburn-theme
+;;   :ensure t
+;;   :config (load-theme 'zenburn t))
+
+;; (use-package gruvbox-theme
+;;   :ensure t
+;;   :config (load-theme 'gruvbox t))
+
+(use-package alect-themes
+  :ensure t
+  :config (load-theme 'alect-dark t))
+
+;; (use-package monokai
+;;   :ensure t
+;;   :config (load-theme 'monokai t))
 ;; Themes:1 ends here
 
 ;; [[file:~/.emacs.d/myinit.org::*Themes][Themes:2]]

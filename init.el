@@ -16,10 +16,13 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(auto-save-default nil)
+ '(custom-safe-themes
+   (quote
+	("ab04c00a7e48ad784b52f34aa6bfa1e80d0c3fcacc50e1189af3651013eb0d58" default)))
  '(default-input-method "spanish-postfix")
  '(package-selected-packages
    (quote
-	(jedi spaceline gruvbox-theme auto-complete counsel ace-window autopair org-bullets which-key try use-package))))
+	(color-theme-sanityinc-tomorrow jedi spaceline gruvbox-theme auto-complete counsel ace-window autopair org-bullets which-key try use-package))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
