@@ -61,6 +61,11 @@
   :ensure t)
 
   #+END_SRC
+* Posframe
+  #+BEGIN_SRC emacs-lisp
+	(use-package posframe
+	  :ensure t)
+  #+END_SRC
 * Which key
   #+BEGIN_SRC emacs-lisp
   (use-package which-key
@@ -71,10 +76,10 @@
   #+END_SRC
 * Org mode
   #+BEGIN_SRC emacs-lisp
-  (use-package org-bullets
-  :ensure t
-  :config
-  (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
+	(use-package org-bullets
+	  :ensure t
+	  :config
+	  (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
 
   #+END_SRC
 * Autopair
@@ -97,68 +102,95 @@
   #+END_SRC
 * Ace windows cambiar ventanas facil
   #+BEGIN_SRC emacs-lisp
-  (use-package ace-window
-  :ensure t
-  :init
-  (progn
-    (global-set-key [remap other-window] 'ace-window)
-    (custom-set-faces
-     '(aw-leading-char-face
-       ((t (:inherit ace-jump-face-foreground :height 3.0))))) 
-    ))
-
+	(use-package ace-window
+	  :ensure t
+	  :init
+	  (progn
+		(setq aw-scope 'global) ;; was frame
+		(global-set-key (kbd "C-x O") 'other-frame)
+		(global-set-key [remap other-window] 'ace-window)
+		(custom-set-faces
+		 '(aw-leading-char-face
+		   ((t (:inherit ace-jump-face-foreground :height 3.0))))) 
+		))
   #+END_SRC
 * Swiper / Ivy / Counsel
   Swiper gives us a really efficient incremental search with regular expressions
   and Ivy / Counsel replace a lot of ido or helms completion functionality
   #+BEGIN_SRC emacs-lisp
-  (use-package counsel
-  :ensure t
-  )
+	(use-package counsel
+	  :ensure t
+	  )
 
-(use-package ivy
-  :ensure t
-  :diminish (ivy-mode)
-  :bind (("C-x b" . ivy-switch-buffer))
-  :config
-  (ivy-mode 1)
-  (setq ivy-use-virtual-buffers t)
-  (setq ivy-display-style 'fancy))
+	(use-package ivy
+	  :ensure t
+	  :diminish (ivy-mode)
+	  :bind (("C-x b" . ivy-switch-buffer))
+	  :config
+	  (ivy-mode 1)
+	  (setq ivy-use-virtual-buffers t)
+	  (setq ivy-display-style 'fancy))
 
 
-(use-package swiper
-  :ensure try
-  :bind (("C-s" . swiper)
-	 ("C-r" . swiper)
-	 ("C-c C-r" . ivy-resume)
-	 ("M-x" . counsel-M-x)
-	 ("C-x C-f" . counsel-find-file))
-  :config
-  (progn
-    (ivy-mode 1)
-    (setq ivy-use-virtual-buffers t)
-    (setq ivy-display-style 'fancy)
-    (define-key read-expression-map (kbd "C-r") 'counsel-expression-history)
-    ))
+	(use-package swiper
+	  :ensure try
+	  :bind (("C-s" . swiper)
+			 ("C-r" . swiper)
+			 ("C-c C-r" . ivy-resume)
+			 ("M-x" . counsel-M-x)
+			 ("C-x C-f" . counsel-find-file))
+	  :config
+	  (progn
+		(ivy-mode 1)
+		(setq ivy-use-virtual-buffers t)
+		(setq ivy-display-style 'fancy)
+		(define-key read-expression-map (kbd "C-r") 'counsel-expression-history)
+		))
 
   #+END_SRC
 * Avy - acceso rapido por letras
   #+BEGIN_SRC emacs-lisp
-  (use-package avy
-  :ensure t
-  :bind ("M-s" . avy-goto-word-1)) ;; changed from char as per jcs
-
+	(use-package avy
+	  :ensure t
+	  :bind ("M-s" . avy-goto-word-1)) ;; changed from char as per jcs
   #+END_SRC
 * Autocomplete
   #+BEGIN_SRC emacs-lisp
-  (use-package auto-complete
-  :ensure t
-  :init
-  (progn
-    (ac-config-default)
-    (global-auto-complete-mode t)
-    ))
+	(use-package auto-complete
+	  :ensure t
+	  :init
+	  (progn
+		(ac-config-default)
+		(global-auto-complete-mode t)
+		))
 
+  #+END_SRC
+* Company
+  #+BEGIN_SRC emacs-lisp
+	(use-package company
+	  :ensure t
+	  :config
+	  (setq company-idle-delay 0)
+	  (setq company-minimum-prefix-length 3)
+  
+	  (global-company-mode t)
+	  )
+
+
+	(defun my/python-mode-hook ()
+	  (add-to-list 'company-backends 'company-jedi))
+
+	(add-hook 'python-mode-hook 'my/python-mode-hook)
+	(use-package company-jedi
+	  :ensure t
+	  :config
+	  (add-hook 'python-mode-hook 'jedi:setup)
+	  )
+
+	(defun my/python-mode-hook ()
+	  (add-to-list 'company-backends 'company-jedi))
+
+	(add-hook 'python-mode-hook 'my/python-mode-hook)
   #+END_SRC
 * Themes
   #+BEGIN_SRC emacs-lisp
@@ -184,24 +216,32 @@
 	;;   :config (load-theme 'monokai t))
   #+END_SRC
 
+modeline para probar
+#+BEGIN_SRC emacs-lisp
+  (use-package doom-modeline
+	:ensure t)
+  (require 'doom-modeline)
+  (doom-modeline-init)
+#+END_SRC
+
   La barra de abajo
   #+BEGIN_SRC emacs-lisp
 	(use-package spaceline
-	  :ensure t
+	  :disabled
 	  :config
 	  (require 'spaceline-config)
-		(setq spaceline-buffer-encoding-abbrev-p nil)
-		(setq spaceline-line-column-p nil)
-		(setq spaceline-line-p nil)
-		(setq powerline-default-separator (quote arrow))
-		(spaceline-spacemacs-theme))
+	  (setq spaceline-buffer-encoding-abbrev-p nil)
+	  (setq spaceline-line-column-p nil)
+	  (setq spaceline-line-p nil)
+	  (setq powerline-default-separator (quote arrow))
+	  (spaceline-spacemacs-theme))
   #+END_SRC
 
   Poner la hora
   #+BEGIN_SRC emacs-lisp
-	(setq display-time-24hr-format t)
-	(setq display-time-format "%H:%M - %d %B %Y")
-	(display-time-mode 1)
+	;; (setq display-time-24hr-format t)
+	;; (setq display-time-format "%H:%M - %d %B %Y")
+	;; (display-time-mode 1)
   #+END_SRC
 * Flycheck
   #+BEGIN_SRC emacs-lisp
@@ -212,9 +252,24 @@
   #+END_SRC
 * Python
   #+BEGIN_SRC emacs-lisp
-	(use-package jedi
+	;; (use-package jedi
+	;;   :ensure t
+	;;   :init
+	;;   (add-hook 'python-mode-hook 'jedi:setup)
+	;;   (add-hook 'python-mode-hook 'jedi:ac-setup))
+
+	(setq py-python-command "python3")
+	(setq python-shell-interpreter "python3")
+
+
+	(use-package elpy
 	  :ensure t
-	  :init
-	  (add-hook 'python-mode-hook 'jedi:setup)
-	  (add-hook 'python-mode-hook 'jedi:ac-setup))
+	  :config 
+	  (elpy-enable))
+
+	(use-package virtualenvwrapper
+	  :ensure t
+	  :config
+	  (venv-initialize-interactive-shells)
+	  (venv-initialize-eshell))
   #+END_SRC

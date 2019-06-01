@@ -48,6 +48,11 @@
 :ensure t)
 ;; Try:1 ends here
 
+;; [[file:~/.emacs.d/myinit.org::*Posframe][Posframe:1]]
+(use-package posframe
+  :ensure t)
+;; Posframe:1 ends here
+
 ;; [[file:~/.emacs.d/myinit.org::*Which%20key][Which key:1]]
 (use-package which-key
 :ensure t 
@@ -57,9 +62,9 @@
 
 ;; [[file:~/.emacs.d/myinit.org::*Org%20mode][Org mode:1]]
 (use-package org-bullets
-:ensure t
-:config
-(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
+  :ensure t
+  :config
+  (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
 ;; Org mode:1 ends here
 
 ;; [[file:~/.emacs.d/myinit.org::*Autopair][Autopair:1]]
@@ -80,14 +85,16 @@
 
 ;; [[file:~/.emacs.d/myinit.org::*Ace%20windows%20cambiar%20ventanas%20facil][Ace windows cambiar ventanas facil:1]]
 (use-package ace-window
-:ensure t
-:init
-(progn
-  (global-set-key [remap other-window] 'ace-window)
-  (custom-set-faces
-   '(aw-leading-char-face
-     ((t (:inherit ace-jump-face-foreground :height 3.0))))) 
-  ))
+  :ensure t
+  :init
+  (progn
+	(setq aw-scope 'global) ;; was frame
+	(global-set-key (kbd "C-x O") 'other-frame)
+	(global-set-key [remap other-window] 'ace-window)
+	(custom-set-faces
+	 '(aw-leading-char-face
+	   ((t (:inherit ace-jump-face-foreground :height 3.0))))) 
+	))
 ;; Ace windows cambiar ventanas facil:1 ends here
 
 ;; [[file:~/.emacs.d/myinit.org::*Swiper%20/%20Ivy%20/%20Counsel][Swiper / Ivy / Counsel:1]]
@@ -108,34 +115,61 @@
 (use-package swiper
   :ensure try
   :bind (("C-s" . swiper)
-	 ("C-r" . swiper)
-	 ("C-c C-r" . ivy-resume)
-	 ("M-x" . counsel-M-x)
-	 ("C-x C-f" . counsel-find-file))
+		 ("C-r" . swiper)
+		 ("C-c C-r" . ivy-resume)
+		 ("M-x" . counsel-M-x)
+		 ("C-x C-f" . counsel-find-file))
   :config
   (progn
-    (ivy-mode 1)
-    (setq ivy-use-virtual-buffers t)
-    (setq ivy-display-style 'fancy)
-    (define-key read-expression-map (kbd "C-r") 'counsel-expression-history)
-    ))
+	(ivy-mode 1)
+	(setq ivy-use-virtual-buffers t)
+	(setq ivy-display-style 'fancy)
+	(define-key read-expression-map (kbd "C-r") 'counsel-expression-history)
+	))
 ;; Swiper / Ivy / Counsel:1 ends here
 
 ;; [[file:~/.emacs.d/myinit.org::*Avy%20-%20acceso%20rapido%20por%20letras][Avy - acceso rapido por letras:1]]
 (use-package avy
-:ensure t
-:bind ("M-s" . avy-goto-word-1)) ;; changed from char as per jcs
+  :ensure t
+  :bind ("M-s" . avy-goto-word-1)) ;; changed from char as per jcs
 ;; Avy - acceso rapido por letras:1 ends here
 
 ;; [[file:~/.emacs.d/myinit.org::*Autocomplete][Autocomplete:1]]
 (use-package auto-complete
-:ensure t
-:init
-(progn
-  (ac-config-default)
-  (global-auto-complete-mode t)
-  ))
+  :ensure t
+  :init
+  (progn
+	(ac-config-default)
+	(global-auto-complete-mode t)
+	))
 ;; Autocomplete:1 ends here
+
+;; [[file:~/.emacs.d/myinit.org::*Company][Company:1]]
+(use-package company
+  :ensure t
+  :config
+  (setq company-idle-delay 0)
+  (setq company-minimum-prefix-length 3)
+
+  (global-company-mode t)
+  )
+
+
+(defun my/python-mode-hook ()
+  (add-to-list 'company-backends 'company-jedi))
+
+(add-hook 'python-mode-hook 'my/python-mode-hook)
+(use-package company-jedi
+  :ensure t
+  :config
+  (add-hook 'python-mode-hook 'jedi:setup)
+  )
+
+(defun my/python-mode-hook ()
+  (add-to-list 'company-backends 'company-jedi))
+
+(add-hook 'python-mode-hook 'my/python-mode-hook)
+;; Company:1 ends here
 
 ;; [[file:~/.emacs.d/myinit.org::*Themes][Themes:1]]
 ;; (use-package color-theme-sanityinc-tomorrow
@@ -161,22 +195,29 @@
 ;; Themes:1 ends here
 
 ;; [[file:~/.emacs.d/myinit.org::*Themes][Themes:2]]
-(use-package spaceline
-  :ensure t
-  :config
-  (require 'spaceline-config)
-	(setq spaceline-buffer-encoding-abbrev-p nil)
-	(setq spaceline-line-column-p nil)
-	(setq spaceline-line-p nil)
-	(setq powerline-default-separator (quote arrow))
-	(spaceline-spacemacs-theme))
+(use-package doom-modeline
+      :ensure t)
+(require 'doom-modeline)
+(doom-modeline-init)
 ;; Themes:2 ends here
 
 ;; [[file:~/.emacs.d/myinit.org::*Themes][Themes:3]]
-(setq display-time-24hr-format t)
-(setq display-time-format "%H:%M - %d %B %Y")
-(display-time-mode 1)
+(use-package spaceline
+  :disabled
+  :config
+  (require 'spaceline-config)
+  (setq spaceline-buffer-encoding-abbrev-p nil)
+  (setq spaceline-line-column-p nil)
+  (setq spaceline-line-p nil)
+  (setq powerline-default-separator (quote arrow))
+  (spaceline-spacemacs-theme))
 ;; Themes:3 ends here
+
+;; [[file:~/.emacs.d/myinit.org::*Themes][Themes:4]]
+;; (setq display-time-24hr-format t)
+;; (setq display-time-format "%H:%M - %d %B %Y")
+;; (display-time-mode 1)
+;; Themes:4 ends here
 
 ;; [[file:~/.emacs.d/myinit.org::*Flycheck][Flycheck:1]]
 (use-package flycheck
@@ -186,9 +227,24 @@
 ;; Flycheck:1 ends here
 
 ;; [[file:~/.emacs.d/myinit.org::*Python][Python:1]]
-(use-package jedi
+;; (use-package jedi
+;;   :ensure t
+;;   :init
+;;   (add-hook 'python-mode-hook 'jedi:setup)
+;;   (add-hook 'python-mode-hook 'jedi:ac-setup))
+
+(setq py-python-command "python3")
+(setq python-shell-interpreter "python3")
+
+
+(use-package elpy
   :ensure t
-  :init
-  (add-hook 'python-mode-hook 'jedi:setup)
-  (add-hook 'python-mode-hook 'jedi:ac-setup))
+  :config 
+  (elpy-enable))
+
+(use-package virtualenvwrapper
+  :ensure t
+  :config
+  (venv-initialize-interactive-shells)
+  (venv-initialize-eshell))
 ;; Python:1 ends here
