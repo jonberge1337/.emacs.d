@@ -9,10 +9,11 @@
 * Variables de inicio
   quitar el mensaje del principio y los menus
   #+BEGIN_SRC emacs-lisp
-  (setq inhibit-startup-message t) ; Quitar el mensaje del principio
-  (tool-bar-mode -1) ; Quitar el menu de copiar pegar 
-  (menu-bar-mode -1) ; Quitar el menu de archivo 
-  (scroll-bar-mode -1) ; Quitar la barra de scroll
+	(setq inhibit-startup-message t) ; Quitar el mensaje del principio
+	(tool-bar-mode -1) ; Quitar el menu de copiar pegar 
+	(menu-bar-mode -1) ; Quitar el menu de archivo 
+	(scroll-bar-mode -1) ; Quitar la barra de scroll
+	;; (set-frame-parameter nil 'undecorated t) ; Quitar titulo ventana
   #+END_SRC
 
   configurar fuentes dependiendo el sistema operativo
@@ -258,8 +259,8 @@ modeline para probar
 	;;   (add-hook 'python-mode-hook 'jedi:setup)
 	;;   (add-hook 'python-mode-hook 'jedi:ac-setup))
 
-	(setq py-python-command "python3")
-	(setq python-shell-interpreter "python3")
+	;; (setq py-python-command "python3")
+	;; (setq python-shell-interpreter "python3")
 
 
 	(use-package elpy

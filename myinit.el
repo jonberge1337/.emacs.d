@@ -7,6 +7,7 @@
 (tool-bar-mode -1) ; Quitar el menu de copiar pegar 
 (menu-bar-mode -1) ; Quitar el menu de archivo 
 (scroll-bar-mode -1) ; Quitar la barra de scroll
+;; (set-frame-parameter nil 'undecorated t) ; Quitar titulo ventana
 ;; Variables de inicio:1 ends here
 
 ;; [[file:~/.emacs.d/myinit.org::*Variables%20de%20inicio][Variables de inicio:2]]
@@ -233,8 +234,8 @@
 ;;   (add-hook 'python-mode-hook 'jedi:setup)
 ;;   (add-hook 'python-mode-hook 'jedi:ac-setup))
 
-(setq py-python-command "python3")
-(setq python-shell-interpreter "python3")
+;; (setq py-python-command "python3")
+;; (setq python-shell-interpreter "python3")
 
 
 (use-package elpy
