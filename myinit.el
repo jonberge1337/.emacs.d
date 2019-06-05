@@ -207,28 +207,27 @@
 
 ;; [[file:~/.emacs.d/myinit.org::*Themes][Themes:2]]
 (use-package doom-modeline
-      :ensure t)
-(require 'doom-modeline)
-(doom-modeline-init)
+      :disabled
+      (require 'doom-modeline)
+      (doom-modeline-init)
+      )
 ;; Themes:2 ends here
 
 ;; [[file:~/.emacs.d/myinit.org::*Themes][Themes:3]]
 (use-package spaceline
-  :disabled
+  :ensure t
   :config
   (require 'spaceline-config)
   (setq spaceline-buffer-encoding-abbrev-p nil)
   (setq spaceline-line-column-p nil)
   (setq spaceline-line-p nil)
   (setq powerline-default-separator (quote arrow))
-  (spaceline-spacemacs-theme))
+  (spaceline-spacemacs-theme)
+  (setq display-time-24hr-format t)
+  (setq display-time-format "%H:%M - %d %B %Y")
+  (display-time-mode 1)
+  )
 ;; Themes:3 ends here
-
-;; [[file:~/.emacs.d/myinit.org::*Themes][Themes:4]]
-;; (setq display-time-24hr-format t)
-;; (setq display-time-format "%H:%M - %d %B %Y")
-;; (display-time-mode 1)
-;; Themes:4 ends here
 
 ;; [[file:~/.emacs.d/myinit.org::*Flycheck][Flycheck:1]]
 (use-package flycheck

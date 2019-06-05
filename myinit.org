@@ -230,30 +230,29 @@
 modeline para probar
 #+BEGIN_SRC emacs-lisp
   (use-package doom-modeline
-	:ensure t)
-  (require 'doom-modeline)
-  (doom-modeline-init)
+	:disabled
+	(require 'doom-modeline)
+	(doom-modeline-init)
+	)
 #+END_SRC
 
   La barra de abajo
   #+BEGIN_SRC emacs-lisp
-	(use-package spaceline
-	  :disabled
-	  :config
-	  (require 'spaceline-config)
-	  (setq spaceline-buffer-encoding-abbrev-p nil)
-	  (setq spaceline-line-column-p nil)
-	  (setq spaceline-line-p nil)
-	  (setq powerline-default-separator (quote arrow))
-	  (spaceline-spacemacs-theme))
+		(use-package spaceline
+		  :ensure t
+		  :config
+		  (require 'spaceline-config)
+		  (setq spaceline-buffer-encoding-abbrev-p nil)
+		  (setq spaceline-line-column-p nil)
+		  (setq spaceline-line-p nil)
+		  (setq powerline-default-separator (quote arrow))
+		  (spaceline-spacemacs-theme)
+		  (setq display-time-24hr-format t)
+		  (setq display-time-format "%H:%M - %d %B %Y")
+		  (display-time-mode 1)
+		  )
   #+END_SRC
 
-  Poner la hora
-  #+BEGIN_SRC emacs-lisp
-	;; (setq display-time-24hr-format t)
-	;; (setq display-time-format "%H:%M - %d %B %Y")
-	;; (display-time-mode 1)
-  #+END_SRC
 * Flycheck
   #+BEGIN_SRC emacs-lisp
 	(use-package flycheck
