@@ -193,6 +193,16 @@
 
 	(add-hook 'python-mode-hook 'my/python-mode-hook)
   #+END_SRC
+* Drag-stuff
+  #+BEGIN_SRC emacs-lisp
+	(use-package drag-stuff
+	  :ensure t
+	  :defer t
+	  :init (progn
+			  (drag-stuff-global-mode 1)
+			  (drag-stuff-define-keys))
+	  )
+  #+END_SRC
 * Themes
   #+BEGIN_SRC emacs-lisp
 	;; (use-package color-theme-sanityinc-tomorrow

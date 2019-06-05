@@ -172,6 +172,16 @@
 (add-hook 'python-mode-hook 'my/python-mode-hook)
 ;; Company:1 ends here
 
+;; [[file:~/.emacs.d/myinit.org::*Drag-stuff][Drag-stuff:1]]
+(use-package drag-stuff
+  :ensure t
+  :defer t
+  :init (progn
+		  (drag-stuff-global-mode 1)
+		  (drag-stuff-define-keys))
+  )
+;; Drag-stuff:1 ends here
+
 ;; [[file:~/.emacs.d/myinit.org::*Themes][Themes:1]]
 ;; (use-package color-theme-sanityinc-tomorrow
 ;; :ensure t
