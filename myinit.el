@@ -44,6 +44,10 @@
 (global-set-key (kbd "C-x k") 'kill-current-buffer)
 ;; Variables de inicio:7 ends here
 
+;; [[file:~/.emacs.d/myinit.org::*Variables%20de%20inicio][Variables de inicio:8]]
+(global-set-key (kbd "C-x C-b") 'ibuffer)
+;; Variables de inicio:8 ends here
+
 ;; [[file:~/.emacs.d/myinit.org::*Try][Try:1]]
 (use-package try
 :ensure t)

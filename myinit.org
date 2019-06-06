@@ -56,6 +56,11 @@
 	(global-set-key (kbd "C-x k") 'kill-current-buffer)
 
   #+END_SRC
+
+  Atajo para ibuffer
+  #+BEGIN_SRC emacs-lisp
+	(global-set-key (kbd "C-x C-b") 'ibuffer)
+  #+END_SRC
 * Try
   #+BEGIN_SRC emacs-lisp
   (use-package try
