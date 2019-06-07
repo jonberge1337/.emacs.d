@@ -48,6 +48,10 @@
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 ;; Variables de inicio:8 ends here
 
+;; [[file:~/.emacs.d/myinit.org::*Variables%20de%20inicio][Variables de inicio:9]]
+(fset 'yes-or-no-p 'y-or-n-p)
+;; Variables de inicio:9 ends here
+
 ;; [[file:~/.emacs.d/myinit.org::*Try][Try:1]]
 (use-package try
 :ensure t)
@@ -262,3 +266,11 @@
   (venv-initialize-interactive-shells)
   (venv-initialize-eshell))
 ;; Python:1 ends here
+
+;; [[file:~/.emacs.d/myinit.org::*Ansi-term][Ansi-term:1]]
+(defvar my-term-shell "/bin/bash")
+(defadvice ansi-term (before force-bash)
+  (interactive (list my-term-shell)))
+(ad-activate 'ansi-term)
+(global-set-key (kbd "<s-return>") 'ansi-term)
+;; Ansi-term:1 ends here

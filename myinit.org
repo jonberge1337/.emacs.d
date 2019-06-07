@@ -61,6 +61,11 @@
   #+BEGIN_SRC emacs-lisp
 	(global-set-key (kbd "C-x C-b") 'ibuffer)
   #+END_SRC
+
+  Cambiar yes-or-no por y-n
+  #+BEGIN_SRC emacs-lisp
+	(fset 'yes-or-no-p 'y-or-n-p)
+  #+END_SRC
 * Try
   #+BEGIN_SRC emacs-lisp
   (use-package try
@@ -287,4 +292,13 @@ modeline para probar
 	  :config
 	  (venv-initialize-interactive-shells)
 	  (venv-initialize-eshell))
+  #+END_SRC
+* Ansi-term
+  Pulsando super enter se inicia ansi-term con bash
+  #+BEGIN_SRC emacs-lisp
+	(defvar my-term-shell "/bin/bash")
+	(defadvice ansi-term (before force-bash)
+	  (interactive (list my-term-shell)))
+	(ad-activate 'ansi-term)
+	(global-set-key (kbd "<s-return>") 'ansi-term)
   #+END_SRC
