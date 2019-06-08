@@ -14,6 +14,11 @@
 	(menu-bar-mode -1) ; Quitar el menu de archivo 
 	(scroll-bar-mode -1) ; Quitar la barra de scroll
 	;; (set-frame-parameter nil 'undecorated t) ; Quitar titulo ventana
+	(defun my/disable-scroll-bars (frame)
+	  (modify-frame-parameters frame
+							   '((vertical-scroll-bars . nil)
+								 (horizontal-scroll-bars . nil))))
+	(add-hook 'after-make-frame-functions 'my/disable-scroll-bars)
   #+END_SRC
 
   configurar fuentes dependiendo el sistema operativo
@@ -65,6 +70,25 @@
   Cambiar yes-or-no por y-n
   #+BEGIN_SRC emacs-lisp
 	(fset 'yes-or-no-p 'y-or-n-p)
+  #+END_SRC
+  
+  Iniciar con eshell
+  #+BEGIN_SRC emacs-lisp
+	;; (add-hook 'emacs-startup-hook 'eshell)
+  #+END_SRC
+
+  Funcion para duplicar linea
+  #+BEGIN_SRC emacs-lisp
+	(defun duplicate-line()
+	  (interactive)
+	  (move-beginning-of-line 1)
+	  (kill-line)
+	  (yank)
+	  (open-line 1)
+	  (next-line 1)
+	  (yank)
+	)
+	(global-set-key (kbd "C-d") 'duplicate-line)
   #+END_SRC
 * Try
   #+BEGIN_SRC emacs-lisp
@@ -215,26 +239,26 @@
   #+END_SRC
 * Themes
   #+BEGIN_SRC emacs-lisp
-	;; (use-package color-theme-sanityinc-tomorrow
-	;; :ensure t
-	;; :config (load-theme 'sanityinc-tomorrow-eighties t))
+	(use-package color-theme-sanityinc-tomorrow
+	  :disabled
+	  :config (load-theme 'sanityinc-tomorrow-eighties t))
 
 
-	;; (use-package zenburn-theme
-	;;   :ensure t
-	;;   :config (load-theme 'zenburn t))
+	(use-package zenburn-theme
+	  :disabled
+	  :config (load-theme 'zenburn t))
 
-	;; (use-package gruvbox-theme
-	;;   :ensure t
-	;;   :config (load-theme 'gruvbox t))
+	(use-package gruvbox-theme
+	  :disabled
+	  :config (load-theme 'gruvbox t))
 
 	(use-package alect-themes
 	  :ensure t
 	  :config (load-theme 'alect-dark t))
 
-	;; (use-package monokai
-	;;   :ensure t
-	;;   :config (load-theme 'monokai t))
+	(use-package monokai
+	  :disabled
+	  :config (load-theme 'monokai t))
   #+END_SRC
 
 modeline para probar

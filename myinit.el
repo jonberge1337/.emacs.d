@@ -8,6 +8,11 @@
 (menu-bar-mode -1) ; Quitar el menu de archivo 
 (scroll-bar-mode -1) ; Quitar la barra de scroll
 ;; (set-frame-parameter nil 'undecorated t) ; Quitar titulo ventana
+(defun my/disable-scroll-bars (frame)
+  (modify-frame-parameters frame
+						   '((vertical-scroll-bars . nil)
+							 (horizontal-scroll-bars . nil))))
+(add-hook 'after-make-frame-functions 'my/disable-scroll-bars)
 ;; Variables de inicio:1 ends here
 
 ;; [[file:~/.emacs.d/myinit.org::*Variables%20de%20inicio][Variables de inicio:2]]
@@ -51,6 +56,23 @@
 ;; [[file:~/.emacs.d/myinit.org::*Variables%20de%20inicio][Variables de inicio:9]]
 (fset 'yes-or-no-p 'y-or-n-p)
 ;; Variables de inicio:9 ends here
+
+;; [[file:~/.emacs.d/myinit.org::*Variables%20de%20inicio][Variables de inicio:10]]
+;; (add-hook 'emacs-startup-hook 'eshell)
+;; Variables de inicio:10 ends here
+
+;; [[file:~/.emacs.d/myinit.org::*Variables%20de%20inicio][Variables de inicio:11]]
+(defun duplicate-line()
+  (interactive)
+  (move-beginning-of-line 1)
+  (kill-line)
+  (yank)
+  (open-line 1)
+  (next-line 1)
+  (yank)
+)
+(global-set-key (kbd "C-d") 'duplicate-line)
+;; Variables de inicio:11 ends here
 
 ;; [[file:~/.emacs.d/myinit.org::*Try][Try:1]]
 (use-package try
@@ -191,26 +213,26 @@
 ;; Drag-stuff:1 ends here
 
 ;; [[file:~/.emacs.d/myinit.org::*Themes][Themes:1]]
-;; (use-package color-theme-sanityinc-tomorrow
-;; :ensure t
-;; :config (load-theme 'sanityinc-tomorrow-eighties t))
+(use-package color-theme-sanityinc-tomorrow
+  :disabled
+  :config (load-theme 'sanityinc-tomorrow-eighties t))
 
 
-;; (use-package zenburn-theme
-;;   :ensure t
-;;   :config (load-theme 'zenburn t))
+(use-package zenburn-theme
+  :disabled
+  :config (load-theme 'zenburn t))
 
-;; (use-package gruvbox-theme
-;;   :ensure t
-;;   :config (load-theme 'gruvbox t))
+(use-package gruvbox-theme
+  :disabled
+  :config (load-theme 'gruvbox t))
 
 (use-package alect-themes
   :ensure t
   :config (load-theme 'alect-dark t))
 
-;; (use-package monokai
-;;   :ensure t
-;;   :config (load-theme 'monokai t))
+(use-package monokai
+  :disabled
+  :config (load-theme 'monokai t))
 ;; Themes:1 ends here
 
 ;; [[file:~/.emacs.d/myinit.org::*Themes][Themes:2]]
