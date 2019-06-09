@@ -58,7 +58,7 @@
 ;; Variables de inicio:9 ends here
 
 ;; [[file:~/.emacs.d/myinit.org::*Variables%20de%20inicio][Variables de inicio:10]]
-;; (add-hook 'emacs-startup-hook 'eshell)
+(add-hook 'emacs-startup-hook 'eshell)
 ;; Variables de inicio:10 ends here
 
 ;; [[file:~/.emacs.d/myinit.org::*Variables%20de%20inicio][Variables de inicio:11]]
@@ -76,7 +76,7 @@
 
 ;; [[file:~/.emacs.d/myinit.org::*Try][Try:1]]
 (use-package try
-:ensure t)
+  :ensure t)
 ;; Try:1 ends here
 
 ;; [[file:~/.emacs.d/myinit.org::*Posframe][Posframe:1]]
@@ -86,9 +86,10 @@
 
 ;; [[file:~/.emacs.d/myinit.org::*Which%20key][Which key:1]]
 (use-package which-key
-:ensure t 
-:config
-(which-key-mode))
+  :ensure t 
+  :config
+  (which-key-mode)
+  )
 ;; Which key:1 ends here
 
 ;; [[file:~/.emacs.d/myinit.org::*Org%20mode][Org mode:1]]
@@ -100,9 +101,9 @@
 
 ;; [[file:~/.emacs.d/myinit.org::*Autopair][Autopair:1]]
 (use-package autopair
-:disabled
-:config
-(autopair-global-mode))
+  :disabled
+  :config
+  (autopair-global-mode))
 
 (setq electric-pair-pairs '(
 						   (?\{ . ?\})
@@ -296,3 +297,13 @@
 (ad-activate 'ansi-term)
 (global-set-key (kbd "<s-return>") 'ansi-term)
 ;; Ansi-term:1 ends here
+
+;; [[file:~/.emacs.d/myinit.org::*Navegador][Navegador:1]]
+(if (eq system-type 'gnu/linux)
+	(setq browse-url-browser-function 'browse-url-generic
+		  browse-url-generic-program "/usr/bin/firefox")
+  )
+(if (eq system-type 'windows-nt)
+	(setq browse-url-browser-function 'browse-url-default-windows-browser))
+(global-set-key (kbd "<s-tab>") 'browse-url-browser-function)
+;; Navegador:1 ends here
