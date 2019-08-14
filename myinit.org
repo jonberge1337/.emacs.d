@@ -251,12 +251,16 @@
 	  :config (load-theme 'gruvbox t))
 
 	(use-package alect-themes
-	  :ensure t
+	  :disabled
 	  :config (load-theme 'alect-dark t))
 
 	(use-package monokai
 	  :disabled
 	  :config (load-theme 'monokai t))
+
+	(use-package atom-one-dark-theme
+	  :ensure t
+	  :config (load-theme 'atom-one-dark t))
   #+END_SRC
 
 modeline para probar

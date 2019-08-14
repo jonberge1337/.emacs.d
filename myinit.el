@@ -58,7 +58,7 @@
 ;; Variables de inicio:9 ends here
 
 ;; [[file:~/.emacs.d/myinit.org::*Variables%20de%20inicio][Variables de inicio:10]]
-(add-hook 'emacs-startup-hook 'eshell)
+;; (add-hook 'emacs-startup-hook 'eshell)
 ;; Variables de inicio:10 ends here
 
 ;; [[file:~/.emacs.d/myinit.org::*Variables%20de%20inicio][Variables de inicio:11]]
@@ -228,12 +228,16 @@
   :config (load-theme 'gruvbox t))
 
 (use-package alect-themes
-  :ensure t
+  :disabled
   :config (load-theme 'alect-dark t))
 
 (use-package monokai
   :disabled
   :config (load-theme 'monokai t))
+
+(use-package atom-one-dark-theme
+  :ensure t
+  :config (load-theme 'atom-one-dark t))
 ;; Themes:1 ends here
 
 ;; [[file:~/.emacs.d/myinit.org::*Themes][Themes:2]]
@@ -304,6 +308,7 @@
 		  browse-url-generic-program "/usr/bin/firefox")
   )
 (if (eq system-type 'windows-nt)
-	(setq browse-url-browser-function 'browse-url-default-windows-browser))
-(global-set-key (kbd "<s-tab>") 'browse-url-browser-function)
+	(setq browse-url-browser-function 'browse-url-default-windows-browser)
+  )
+(global-set-key (kbd "<s-tab>") 'browse-url)
 ;; Navegador:1 ends here
