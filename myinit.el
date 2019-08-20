@@ -167,13 +167,13 @@
 ;; Avy - acceso rapido por letras:1 ends here
 
 ;; [[file:~/.emacs.d/myinit.org::*Autocomplete][Autocomplete:1]]
-(use-package auto-complete
-  :ensure t
-  :init
-  (progn
-	(ac-config-default)
-	(global-auto-complete-mode t)
-	))
+;; (use-package auto-complete
+;;   :ensure t
+;;   :init
+;;   (progn
+;; 	(ac-config-default)
+;; 	(global-auto-complete-mode t)
+;; 	))
 ;; Autocomplete:1 ends here
 
 ;; [[file:~/.emacs.d/myinit.org::*Company][Company:1]]
@@ -181,7 +181,7 @@
   :ensure t
   :config
   (setq company-idle-delay 0)
-  (setq company-minimum-prefix-length 3)
+  (setq company-minimum-prefix-length 1)
 
   (global-company-mode t)
   )
@@ -202,6 +202,13 @@
 
 (add-hook 'python-mode-hook 'my/python-mode-hook)
 ;; Company:1 ends here
+
+;; [[file:~/.emacs.d/myinit.org::*Company][Company:2]]
+(eval-after-load 'company
+  '(progn
+	 (define-key company-active-map (kbd "TAB") 'company-complete-common-or-cycle)
+	 (define-key company-active-map (kbd "<tab>") 'company-complete-common-or-cycle)))
+;; Company:2 ends here
 
 ;; [[file:~/.emacs.d/myinit.org::*Drag-stuff][Drag-stuff:1]]
 (use-package drag-stuff
