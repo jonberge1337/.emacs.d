@@ -312,3 +312,13 @@
   )
 (global-set-key (kbd "<s-tab>") 'browse-url)
 ;; Navegador:1 ends here
+
+;; [[file:~/.emacs.d/myinit.org::*Yanippet][Yanippet:1]]
+(use-package yasnippet
+  :ensure t
+  :init
+  (yas-global-mode 1))
+
+(use-package yasnippet-snippets
+  :ensure t)
+;; Yanippet:1 ends here
