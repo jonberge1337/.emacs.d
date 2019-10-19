@@ -301,6 +301,13 @@
   (venv-initialize-eshell))
 ;; Python:1 ends here
 
+;; [[file:~/.emacs.d/myinit.org::*Rust][Rust:1]]
+(use-package rust-mode
+      :ensure t)
+(use-package flycheck-rust
+      :ensure t)
+;; Rust:1 ends here
+
 ;; [[file:~/.emacs.d/myinit.org::*Ansi-term][Ansi-term:1]]
 (defvar my-term-shell "/bin/bash")
 (defadvice ansi-term (before force-bash)

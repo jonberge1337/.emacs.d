@@ -327,6 +327,13 @@ modeline para probar
 	  (venv-initialize-interactive-shells)
 	  (venv-initialize-eshell))
   #+END_SRC
+* Rust
+#+BEGIN_SRC emacs-lisp
+  (use-package rust-mode
+	:ensure t)
+  (use-package flycheck-rust
+	:ensure t)
+#+END_SRC
 * Ansi-term
   Pulsando super enter se inicia ansi-term con bash
   #+BEGIN_SRC emacs-lisp
