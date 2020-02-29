@@ -50,6 +50,7 @@
   numero de lineas
   #+BEGIN_SRC emacs-lisp
   (global-linum-mode 1) ;; ver numero de linea  
+  (setq linum-format "%d ") ;; dejar espacio despues del numero de linea
   #+END_SRC
 
   Matar el buffer sin preguntar, siempre y cuando no este guardado el archivo
@@ -255,7 +256,7 @@
 	  :config (load-theme 'zenburn t))
 
 	(use-package gruvbox-theme
-	  :disabled
+	  :ensure t	  
 	  :config (load-theme 'gruvbox t))
 
 	(use-package alect-themes
@@ -267,7 +268,7 @@
 	  :config (load-theme 'monokai t))
 
 	(use-package atom-one-dark-theme
-	  :ensure t
+	  :disabled	  
 	  :config (load-theme 'atom-one-dark t))
   #+END_SRC
 
