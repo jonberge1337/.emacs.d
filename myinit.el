@@ -4,8 +4,8 @@
 
 ;; [[file:~/.emacs.d/myinit.org::*Variables%20de%20inicio][Variables de inicio:1]]
 (setq inhibit-startup-message t) ; Quitar el mensaje del principio
-(tool-bar-mode -1) ; Quitar el menu de copiar pegar 
-(menu-bar-mode -1) ; Quitar el menu de archivo 
+(tool-bar-mode -1) ; Quitar el menu de copiar pegar
+(menu-bar-mode -1) ; Quitar el menu de archivo
 (scroll-bar-mode -1) ; Quitar la barra de scroll
 ;; (set-frame-parameter nil 'undecorated t) ; Quitar titulo ventana
 (defun my/disable-scroll-bars (frame)
@@ -33,36 +33,31 @@
 ;; Variables de inicio:4 ends here
 
 ;; [[file:~/.emacs.d/myinit.org::*Variables%20de%20inicio][Variables de inicio:5]]
-(setq-default indent-tabs-mode t) ;; tabulaciones no espacios
-(setq-default tab-width 4) ;; tabulaciones de cuatro caracteres
+(global-linum-mode 1) ;; ver numero de linea
+(setq linum-format "%d ") ;; dejar espacio despues del numero de linea
 ;; Variables de inicio:5 ends here
 
 ;; [[file:~/.emacs.d/myinit.org::*Variables%20de%20inicio][Variables de inicio:6]]
-(global-linum-mode 1) ;; ver numero de linea  
-(setq linum-format "%d ") ;; dejar espacio despues del numero de linea
-;; Variables de inicio:6 ends here
-
-;; [[file:~/.emacs.d/myinit.org::*Variables%20de%20inicio][Variables de inicio:7]]
 (defun kill-current-buffer ()
   "Kills the current buffer."
   (interactive)
   (kill-buffer (current-buffer)))
 (global-set-key (kbd "C-x k") 'kill-current-buffer)
+;; Variables de inicio:6 ends here
+
+;; [[file:~/.emacs.d/myinit.org::*Variables%20de%20inicio][Variables de inicio:7]]
+(global-set-key (kbd "C-x C-b") 'ibuffer)
 ;; Variables de inicio:7 ends here
 
 ;; [[file:~/.emacs.d/myinit.org::*Variables%20de%20inicio][Variables de inicio:8]]
-(global-set-key (kbd "C-x C-b") 'ibuffer)
+(fset 'yes-or-no-p 'y-or-n-p)
 ;; Variables de inicio:8 ends here
 
 ;; [[file:~/.emacs.d/myinit.org::*Variables%20de%20inicio][Variables de inicio:9]]
-(fset 'yes-or-no-p 'y-or-n-p)
+;; (add-hook 'emacs-startup-hook 'eshell)
 ;; Variables de inicio:9 ends here
 
 ;; [[file:~/.emacs.d/myinit.org::*Variables%20de%20inicio][Variables de inicio:10]]
-;; (add-hook 'emacs-startup-hook 'eshell)
-;; Variables de inicio:10 ends here
-
-;; [[file:~/.emacs.d/myinit.org::*Variables%20de%20inicio][Variables de inicio:11]]
 (defun duplicate-line()
   (interactive)
   (move-beginning-of-line 1)
@@ -73,7 +68,7 @@
   (yank)
 )
 (global-set-key (kbd "C-d") 'duplicate-line)
-;; Variables de inicio:11 ends here
+;; Variables de inicio:10 ends here
 
 ;; [[file:~/.emacs.d/myinit.org::*Try][Try:1]]
 (use-package try
@@ -87,7 +82,7 @@
 
 ;; [[file:~/.emacs.d/myinit.org::*Which%20key][Which key:1]]
 (use-package which-key
-  :ensure t 
+  :ensure t
   :config
   (which-key-mode)
   )
@@ -126,7 +121,7 @@
 	(global-set-key [remap other-window] 'ace-window)
 	(custom-set-faces
 	 '(aw-leading-char-face
-	   ((t (:inherit ace-jump-face-foreground :height 3.0))))) 
+	   ((t (:inherit ace-jump-face-foreground :height 3.0)))))
 	))
 ;; Ace windows cambiar ventanas facil:1 ends here
 
@@ -232,8 +227,8 @@
   :config (load-theme 'zenburn t))
 
 (use-package gruvbox-theme
-  :ensure t	  
-  :config (load-theme 'gruvbox t))
+  :ensure t
+  :config (load-theme 'gruvbox-dark-medium t))
 
 (use-package alect-themes
   :disabled
@@ -244,7 +239,7 @@
   :config (load-theme 'monokai t))
 
 (use-package atom-one-dark-theme
-  :disabled	  
+  :disabled
   :config (load-theme 'atom-one-dark t))
 ;; Themes:1 ends here
 
@@ -292,7 +287,7 @@
 
 (use-package elpy
   :ensure t
-  :config 
+  :config
   (elpy-enable))
 
 (use-package virtualenvwrapper
@@ -337,3 +332,10 @@
 (use-package yasnippet-snippets
   :ensure t)
 ;; Yanippet:1 ends here
+
+;; [[file:~/.emacs.d/myinit.org::*EditorConfig][EditorConfig:1]]
+(use-package editorconfig
+  :ensure t
+      :config
+      (editorconfig-mode 1))
+;; EditorConfig:1 ends here

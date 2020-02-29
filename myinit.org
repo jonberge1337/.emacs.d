@@ -1,8 +1,8 @@
 
-#+STARTUP: overview 
+#+STARTUP: overview
 #+PROPERTY: header-args :comments yes :results silent
 * Repositorios
-  #+BEGIN_SRC emacs-lisp 
+  #+BEGIN_SRC emacs-lisp
   (add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t)
 
   #+END_SRC
@@ -10,8 +10,8 @@
   quitar el mensaje del principio y los menus
   #+BEGIN_SRC emacs-lisp
 	(setq inhibit-startup-message t) ; Quitar el mensaje del principio
-	(tool-bar-mode -1) ; Quitar el menu de copiar pegar 
-	(menu-bar-mode -1) ; Quitar el menu de archivo 
+	(tool-bar-mode -1) ; Quitar el menu de copiar pegar
+	(menu-bar-mode -1) ; Quitar el menu de archivo
 	(scroll-bar-mode -1) ; Quitar la barra de scroll
 	;; (set-frame-parameter nil 'undecorated t) ; Quitar titulo ventana
 	(defun my/disable-scroll-bars (frame)
@@ -28,7 +28,7 @@
 	  (setq default-frame-alist '((font . "Dejavu Sans Mono-12")))
 	  )
   #+END_SRC
-  
+
   Evitar archivos de copia de seguridad ya que luego se llena de archivos basura
   #+BEGIN_SRC emacs-lisp
 	  (setq make-backup-files nil) ; stop creating backup~ files
@@ -40,16 +40,10 @@
 	(show-paren-mode 1) ;; remarca parentesis llaves y corchetes
 	(setq show-paren-delay 0) ;; evitar tiempo de espera al remarcar
   #+END_SRC
-  
-  Tabulaciones
-  #+BEGIN_SRC emacs-lisp
-  (setq-default indent-tabs-mode t) ;; tabulaciones no espacios
-  (setq-default tab-width 4) ;; tabulaciones de cuatro caracteres  
-  #+END_SRC
 
   numero de lineas
   #+BEGIN_SRC emacs-lisp
-  (global-linum-mode 1) ;; ver numero de linea  
+  (global-linum-mode 1) ;; ver numero de linea
   (setq linum-format "%d ") ;; dejar espacio despues del numero de linea
   #+END_SRC
 
@@ -72,7 +66,7 @@
   #+BEGIN_SRC emacs-lisp
 	(fset 'yes-or-no-p 'y-or-n-p)
   #+END_SRC
-  
+
   Iniciar con eshell
   #+BEGIN_SRC emacs-lisp
 	;; (add-hook 'emacs-startup-hook 'eshell)
@@ -104,7 +98,7 @@
 * Which key
   #+BEGIN_SRC emacs-lisp
 	(use-package which-key
-	  :ensure t 
+	  :ensure t
 	  :config
 	  (which-key-mode)
 	  )
@@ -145,7 +139,7 @@
 		(global-set-key [remap other-window] 'ace-window)
 		(custom-set-faces
 		 '(aw-leading-char-face
-		   ((t (:inherit ace-jump-face-foreground :height 3.0))))) 
+		   ((t (:inherit ace-jump-face-foreground :height 3.0)))))
 		))
   #+END_SRC
 * Swiper / Ivy / Counsel
@@ -206,7 +200,7 @@
 	  :config
 	  (setq company-idle-delay 0)
 	  (setq company-minimum-prefix-length 1)
-  
+
 	  (global-company-mode t)
 	  )
 
@@ -256,8 +250,8 @@
 	  :config (load-theme 'zenburn t))
 
 	(use-package gruvbox-theme
-	  :ensure t	  
-	  :config (load-theme 'gruvbox t))
+	  :ensure t
+	  :config (load-theme 'gruvbox-dark-medium t))
 
 	(use-package alect-themes
 	  :disabled
@@ -268,7 +262,7 @@
 	  :config (load-theme 'monokai t))
 
 	(use-package atom-one-dark-theme
-	  :disabled	  
+	  :disabled
 	  :config (load-theme 'atom-one-dark t))
   #+END_SRC
 
@@ -319,7 +313,7 @@ modeline para probar
 
 	(use-package elpy
 	  :ensure t
-	  :config 
+	  :config
 	  (elpy-enable))
 
 	(use-package virtualenvwrapper
@@ -344,7 +338,7 @@ modeline para probar
 	(ad-activate 'ansi-term)
 	(global-set-key (kbd "<s-return>") 'ansi-term)
   #+END_SRC
-* Navegador  
+* Navegador
   Navegador por defecto
   #+BEGIN_SRC emacs-lisp
 	(if (eq system-type 'gnu/linux)
@@ -365,4 +359,11 @@ modeline para probar
 
 	(use-package yasnippet-snippets
 	  :ensure t)
+  #+END_SRC
+* EditorConfig
+  #+BEGIN_SRC emacs-lisp
+  (use-package editorconfig
+    :ensure t
+	:config
+	(editorconfig-mode 1))
   #+END_SRC
