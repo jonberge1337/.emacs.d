@@ -38,7 +38,8 @@
 ;; Variables de inicio:5 ends here
 
 ;; [[file:~/.emacs.d/myinit.org::*Variables%20de%20inicio][Variables de inicio:6]]
-(global-linum-mode 1) ;; ver numero de linea
+(global-linum-mode 1) ;; ver numero de linea  
+(setq linum-format "%d ") ;; dejar espacio despues del numero de linea
 ;; Variables de inicio:6 ends here
 
 ;; [[file:~/.emacs.d/myinit.org::*Variables%20de%20inicio][Variables de inicio:7]]
@@ -231,7 +232,7 @@
   :config (load-theme 'zenburn t))
 
 (use-package gruvbox-theme
-  :disabled
+  :ensure t	  
   :config (load-theme 'gruvbox t))
 
 (use-package alect-themes
@@ -243,7 +244,7 @@
   :config (load-theme 'monokai t))
 
 (use-package atom-one-dark-theme
-  :ensure t
+  :disabled	  
   :config (load-theme 'atom-one-dark t))
 ;; Themes:1 ends here
 
